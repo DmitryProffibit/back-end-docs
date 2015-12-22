@@ -1,34 +1,37 @@
-#User API
+# User API
 
-##GET user/registerViaFacebook
+## GET user/registerViaFacebook
 
-###PARAMS   
-   $clientId - клиент SSO (@TODO: пока у нас один клиент мд)
+### PARAMS   
+  * clientId - клиент SSO (@TODO: пока у нас один клиент мд)
 
+### Note
 *не требует авторизации*
 Зарегистрирует пользователя, если почта пользователя фб уже зарегистрирована просто залогинит.
 
 
-##POST user/register
+## POST user/register
 
-###DATA:
+### DATA:
 ```js
   { 
     "client":"md", 
-    "email":"v.pustovalov@finexpert.kh.ua", 
+    "email":"v.foo@proffibit.com.ua", 
     "password":"1", 
     "phone":"+389999999", 
     "name":"fooo"
   }
 ```
 
-###RESPONCE:
+### RESPONCE:
 ```js
 {
   token, // токен доступа для этого пользователя
   user, // созданый пользователь
 }
 ```
+### Note
+
 *не требует авторизации*
 Создаёт пользователя, высылает на почту email письмо со ссылкой активации, 
   при переходе по ссылке:
@@ -37,13 +40,12 @@
       средиректит его на redirectUri @TODO: сейчас редиректит на захардкоженый адрес
 
 
-##GET user/me
-
-###RESPONCE:
+## GET user/me
+### RESPONCE:
 ```js
 	{
 		...userFields
 	}
 ```
-
+### Note
 Возвращает текущего залогиненого пользователя
